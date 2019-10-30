@@ -1,0 +1,90 @@
+<h1>Search Screen</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<form>
+    <div>
+    <input type="button" value="Load" id="load_data">    
+    </div>
+    <br/>
+    
+    <div>
+    <input type="text" name="name" required>        
+    </div>
+    <br/>
+    
+    <div>
+    <input type="checkbox" checked/> Upcoming Movies
+    </div>        
+    <br/>
+    
+    <div>
+    <input type="button" value="Search">
+    </div>
+    
+    <div id="employee_table"></div>
+</form>
+
+
+
+
+
+<script>
+$(document).ready(function(){
+ $('#load_data').click(function(){
+  $.ajax({
+   url:"Chicago_Park_District__Movies_in_the_Parks_2019.csv",
+   dataType:"text",
+   success:function(data)
+   {
+    var employee_data = data.split(/\r?\n|\r/);
+    var table_data = '<table class="table table-bordered table-striped">';
+    for(var count = 0; count<employee_data.length; count++)
+    {
+     var cell_data = employee_data[count].split(",");
+     table_data += '<tr>';
+     for(var cell_count=0; cell_count<cell_data.length; cell_count++)
+     {
+      if(count === 0)
+      {
+       table_data += '<th>'+cell_data[cell_count]+'</th>';
+      }
+      else
+      {
+       table_data += '<td>'+cell_data[cell_count]+'</td>';
+      }
+     }
+     table_data += '</tr>';
+    }
+    table_data += '</table>';
+    $('#employee_table').html(table_data);
+   }
+  });
+ });
+ 
+});
+</script>
+
+
+
+
+
+
+
+
+<!--     <script>
+      $.get("https://data.cityofchicago.org/api/views/7piw-z6r6/rows.json?", 
+        function (data) {
+        $.each(data, function (i,v) {
+          $("body").append(v.name + "<br>");
+        });   // end of the callback function and parameter list for $.each
+      }); //  end of the callback function and parameter list for $.get
+
+</script>
+
+
+ -->
+
+
+
+
+<!-- https://data.cityofchicago.org/api/views/7piw-z6r6/rows.json?accessType=DOWNLOAD -->

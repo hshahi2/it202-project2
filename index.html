@@ -45,36 +45,80 @@
 
   <!-- the content divs -->
   <div class="content" id="home">
-    Home page
   </div>
   <div class="content" id="screen2">
-    This is screen 2
   </div>
   <div class="content" id="screen3">
-    This is screen 3
   </div>
   <div class="content" id="about">
-    About 
   </div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      
-
-  
+     
   <script>
     hideScreens();
-
 
     function hideScreens() {
       $(".content").hide();
     }
 
+    $(document).ready(function() {
+
+      $(".nav-link").on("click", function(){
+        hideScreens();
+        var target = $(this).attr("href");
+        $(target).show();
+        $(target).load("page_content/_search.html");
+      });
+    });
+  </script>
+  
+  <script>
+    hideScreens();
+
+    function hideScreens() {
+      $(".content").hide();
+    }
 
     $(document).ready(function() {
 
+      $(".nav-link").on("click", function(){
+        hideScreens();
+        var target = $(this).attr("href");
+        $(target).show();
+        $(target).load("page_content/_list.html");
+      });
+    });
+  </script>
+    
+  <script>
+    hideScreens();
 
+    function hideScreens() {
+      $(".content").hide();
+    }
+
+    $(document).ready(function() {
+
+      $(".nav-link").on("click", function(){
+        hideScreens();
+        var target = $(this).attr("href");
+        $(target).show();
+        $(target).load("page_content/_map.html");
+      });
+    });
+  </script>
+    
+  <script>
+    hideScreens();
+
+    function hideScreens() {
+      $(".content").hide();
+    }
+
+    $(document).ready(function() {
 
       $(".nav-link").on("click", function(){
         hideScreens();
@@ -82,9 +126,15 @@
         $(target).show();
         $(target).load("page_content/_" + target.replace("#","") + ".html");
       });
-
     });
   </script>
+    
+    
+    
+    
+    
+    
+ 
 
 
   </body>
