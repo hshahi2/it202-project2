@@ -1,1 +1,54 @@
 <h1> List Screen</h1>
+
+<div id="chicago_park_district_movie_table"></div>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+  </head>
+  <body>
+    <script src="moviedata.js"></script>
+    <script>
+      
+      // define the keys you want to display, 
+      // in the order you want, with the label
+      let keysAndLabelsIWantToDisplay = 
+      {
+        "day":"Day","park":"Park",
+        "park_phone":"Park Phone",
+        "title":"Title",
+        "cc":"CC",
+        "rating":"Rating",
+        "park_address":"Park Address",
+        "location":"Location"
+      };
+
+      //  loop the data
+      for (let p in the_data) {
+        let payment = the_data[p];
+        
+        // loop your display object
+        for (let k in keysAndLabelsIWantToDisplay) {
+          // get the relevant label and value
+          let displayLabel = keysAndLabelsIWantToDisplay[k];
+          let displayValue = payment[k];
+          // output
+          console.log (displayLabel, ": ",displayValue);
+        }
+        console.log("*****************");
+
+
+      }
+      </script>
+
+
+  </body>
+</html>
+
+
+  </body>
+</html>
