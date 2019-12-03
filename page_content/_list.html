@@ -1,18 +1,31 @@
 <h1> List Screen</h1>
+<!-- <form>
+    <div>
+        <input type="button" value="Load" id="data">    
+    </div>
+    <br/>
+    
+    <br/>
+    <br/>
+    <div id="data"></div>
+</form>
 
-<div id="chicago_park_district_movie_table"></div>
 
+ -->
 
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <title>repl.it</title>
   </head>
+    
   <body>
+      
     <script src="moviedata.js"></script>
-    <script>
+    <script id = "#data">
       
       // define the keys you want to display, 
       // in the order you want, with the label
@@ -38,17 +51,36 @@
           let displayValue = payment[k];
           // output
           console.log (displayLabel, ": ",displayValue);
+            
+            
+            console.log = function(message) {
+    document.getElementById('result').innerHTML = message;
+};
+console.log('your result');
+//               function printFollowers(followersSum) {
+//       followersSum = document.getElementById('printFollower').innerHTML
+//       console.log(followersSum); // you can do print followersSum wherever you want
+//       document.write(followersSum);
+    }
+
+    printFollowers();
+            
+            
+     
         }
         console.log("*****************");
 
 
-      }
       </script>
 
 
   </body>
-</html>
+    
+    <div id="result"></div>
 
 
-  </body>
+    
+    
+    
 </html>
+

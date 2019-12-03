@@ -2,9 +2,6 @@
 
 ?>
 
-
-
-
 <h1>Search Screen</h1>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -15,7 +12,7 @@
     <br/>
     
     <div>
-        <input type="text" name="name" required>        
+        <input type="text" name="name" id="input"required>        
     </div>
     <br/>
     
@@ -25,7 +22,9 @@
     <br/>
     
     <div>
-        <input type="button" value="Search" id="load_from_search">
+        <button id="load_from_search">
+           Search
+        </button>
     </div>
     
     <br/>
@@ -38,37 +37,40 @@
 
 
 
-<script src="moviedata.js">
-    var table = document.getElementbyId
-//     $(document).ready(function(){
-//         $('#load_from_search').click(function(){
-//             $.ajax({
-//                 url:"https://data.cityofchicago.org/resource/7piw-z6r6.json?$select=park",
-//                 method: 'GET',
-//             }).done(function(response)
-//                    {
-//                 $.each(response, function(i, v)
-// 				{
-// 					var option = "<option value=\"" + v.school_type + "\">" + v.school_type + "</option>";
-// 					$("#multiselect").append(option);
-// 				});
-		        
-// 		    }).fail(function(err) 
-// 			   {
-// 			   		throw err;
-// 		       });
 
-            
-            
-//             })
-//         })
-//     })
-</script>
+        <script src="moviedata.js"></script>
 
 
 
 <script>
 $(document).ready(function(){
+    $('button').click(function(){
+            // the url for requesting school type data from the api
+                    var d = document.getElementById('input').value;
+                    console.log(d);     
+//      $.ajax(
+//                 {
+                   
+//                     url: "https://data.cityofchicago.org/resource/7piw-z6r6.json?$park=" + d,
+//                     dataType:"text",
+//                  }).done(function(response) 
+//                     {
+//                         //console.log(response);
+
+//                         $.each(response, function(i, v){
+//                             $("body").append(v.park + "<br>");
+//                             console.log(v.park);
+
+//                         });
+
+//                     }).fail(function(err) 
+//                        {
+//                             throw err;
+//                        });
+ });
+    
+    
+    
  $('#load_data').click(function(){
   $.ajax({
    url:"Chicago_Park_District__Movies_in_the_Parks_2019.csv",
@@ -96,25 +98,3 @@ $(document).ready(function(){
  });
 });
 </script>
-
-
-
-
-
-
-
-<!-- 
-     <script>
-      $.get("https://data.cityofchicago.org/resource/7piw-z6r6.json", 
-        function (data) {
-        $.each(data, function (i,v) {
-          $("body").append(v.name + "<br>");
-        });   // end of the callback function and parameter list for $.each
-      }); //  end of the callback function and parameter list for $.get
-
-</script>
- -->
-<!-- https://data.cityofchicago.org/resource/7piw-z6r6.json
-
- -->
-
