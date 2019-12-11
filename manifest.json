@@ -1,0 +1,12 @@
+{
+  "short_name": "Chicago Movies",
+  "name": "Chicago Movies",
+  "theme_color":  "#FFE1C4",
+  "icons": [
+    {
+      "src": "./imgs/energy.jpg",
+      "type": "image/jpg"
+    }
+  ],
+  "start_url": "https://hshahi2.github.io/it202-project2/index.html"
+}

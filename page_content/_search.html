@@ -1,100 +1,42 @@
-<?php
-
-?>
-
-<h1>Search Screen</h1>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<form>
-    <div>
-        <input type="button" value="Load" id="load_data">    
-    </div>
-    <br/>
-    
-    <div>
-        <input type="text" name="name" id="input"required>        
-    </div>
-    <br/>
-    
-    <div>
-        <input type="checkbox" checked/> Upcoming Movies
-    </div>        
-    <br/>
-    
-    <div>
-        <button id="load_from_search">
-           Search
-        </button>
+<div>
+    <h1>Chicago Park District: Movies in the Parks 2019</h1>
+<!--CHECK BOX OPTIONS-->
+        <div class="space" style="text-align: center;">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" text-align= "center"type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Park">
+            <label class="form-check-label" for="inlineRadio1">Park Name</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" text-align= "center"type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Title">
+            <label class="form-check-label" for="inlineRadio2">Movie Title</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input"  type="radio" name="inlineRadioOptions" id="inlineRadio3" value="Day">
+            <label class="form-check-label" for="inlineRadio3">Day of the week</label>
+        </div>   
     </div>
     
-    <br/>
-    <br/>
-    <div id="chicago_park_district_movie_table"></div>
-</form>
+    <br></br>
 
-<!-- https://data.cityofchicago.org/resource/7piw-z6r6.json?$select=park&$WHERE=rating="PG"
- -->
-
-
-
-
-        <script src="moviedata.js"></script>
-
-
-
-<script>
-$(document).ready(function(){
-    $('button').click(function(){
-            // the url for requesting school type data from the api
-                    var d = document.getElementById('input').value;
-                    console.log(d);     
-//      $.ajax(
-//                 {
-                   
-//                     url: "https://data.cityofchicago.org/resource/7piw-z6r6.json?$park=" + d,
-//                     dataType:"text",
-//                  }).done(function(response) 
-//                     {
-//                         //console.log(response);
-
-//                         $.each(response, function(i, v){
-//                             $("body").append(v.park + "<br>");
-//                             console.log(v.park);
-
-//                         });
-
-//                     }).fail(function(err) 
-//                        {
-//                             throw err;
-//                        });
- });
+    <form class="form-inline justify-content-center" action="/action_page.php">
+        <input type="text" class="form-control" id="userInput" placeholder="Search" name="userInput" value="" onkeydown="return (event.keyCode!=13);">
+    </form>
+<!--SUBMIT BUTTON-->
+    <div class="space" style="text-align: center;">
+        <h1></h1>
+        <br></br>
+        <button id="submitButton" class="btn btn-primary"> Submit </button>
+    </div>
+<!--CHECK FORM TO ONLY SELECT UPCOMING MOVIES-->
+    <div class="form-check" style="text-align: center;">
+        <input type="checkbox" class="form-check-input" id="movieOccurred">
+        <label class="form-check-label" for="movieOccurred">Upcoming Movies</label>
+    </div>
+</div>    
     
     
-    
- $('#load_data').click(function(){
-  $.ajax({
-   url:"Chicago_Park_District__Movies_in_the_Parks_2019.csv",
-   dataType:"text",
-   success:function(data){
-       var chicago_park_district_movie_data = data.split(/\r?\n|\r/);
-       var table_data = '<table class="table table-bordered table-striped">';
-       for(var count = 0; count<chicago_park_district_movie_data.length; count++){
-           var cell_data = chicago_park_district_movie_data[count].split(",");
-           table_data += '<tr>';
-           for(var cell_count=0; cell_count<cell_data.length; cell_count++){
-               if(count === 0){
-                   table_data += '<th>'+cell_data[cell_count]+'</th>';
-                }
-                else{
-                    table_data += '<td>'+cell_data[cell_count]+'</td>';
-                }
-           }
-           table_data += '</tr>';
-       }
-       table_data += '</table>';
-       $('#chicago_park_district_movie_table').html(table_data);
-   }
-  });
- });
-});
-</script>
+
+
+
+
+</div>
