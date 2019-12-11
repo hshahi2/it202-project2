@@ -4,8 +4,8 @@
   "theme_color":  "#FFE1C4",
   "icons": [
     {
-      "src": "./imgs/energy.jpg",
-      "type": "image/jpg"
+      "src": "./imgs/favicon.ico",
+      "type": "image/ico"
     }
   ],
   "start_url": "https://hshahi2.github.io/it202-project2/index.html"
