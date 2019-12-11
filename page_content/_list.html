@@ -1,86 +1,41 @@
-<h1> List Screen</h1>
-<!-- <form>
-    <div>
-        <input type="button" value="Load" id="data">    
-    </div>
-    <br/>
-    
-    <br/>
-    <br/>
-    <div id="data"></div>
-</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Day</th>
+       <th scope="col">Date</th>
+      <th scope="col">Park</th>
+      <th scope="col">Park Phone</th>
+      <th scope="col">Title</th>
+      <th scope="col">CC</th>
+      <th scope="col">Rating</th>
+      <th scope="col">Underwriter</th>
+      <th scope="col">Park Address</th>
+      <th scope="col">Location</th> 
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
 
-
- -->
-<!-- 
-<!DOCTYPE html>
-
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-  </head>
-    
-  <body>
-      
-    <script src="moviedata.js"></script>
-    <script id = "#data">
-      
-      // define the keys you want to display, 
-      // in the order you want, with the label
-      let keysAndLabelsIWantToDisplay = 
-      {
-        "day":"Day","park":"Park",
-        "park_phone":"Park Phone",
-        "title":"Title",
-        "cc":"CC",
-        "rating":"Rating",
-        "park_address":"Park Address",
-        "location":"Location"
-      };
-
-      //  loop the data
-      for (let p in the_data) {
-        let payment = the_data[p];
+<script>
+    var endpoint = sessionStorage.getItem("endpoint");
+    $.getJSON(endpoint, function(data){
+       
+        var items = [];
         
-        // loop your display object
-        for (let k in keysAndLabelsIWantToDisplay) {
-          // get the relevant label and value
-          let displayLabel = keysAndLabelsIWantToDisplay[k];
-          let displayValue = payment[k];
-          // output
-          console.log (displayLabel, ": ",displayValue);
-            
-            
-            console.log = function(message) {
-    document.getElementById('result').innerHTML = message;
-};
-console.log('your result'); -->
-//               function printFollowers(followersSum) {
-//       followersSum = document.getElementById('printFollower').innerHTML
-//       console.log(followersSum); // you can do print followersSum wherever you want
-//       document.write(followersSum);
-    }
-
-//     printFollowers();
-            
-            
-     
-//         }
-//         console.log("*****************");
-
-
-//       </script>
-
-
-//   </body>
-    
-//     <div id="result"></div>
-
-
-    
-    
-    
-// </html>
-
+        $.each(data, function(key, value){
+            items.push("<tr>");
+            items.push("<td id=''"+key+"''>"+value.day+"</td>");
+            items.push("<td id=''"+key+"''>"+value.date+"</td>");
+            items.push("<td id=''"+key+"''>"+value.park+"</td>");
+            items.push("<td id=''"+key+"''>"+value.park_phone+"</td>");
+            items.push("<td id=''"+key+"''>"+value.title+"</td>");
+            items.push("<td id=''"+key+"''>"+value.cc+"</td>");
+            items.push("<td id=''"+key+"''>"+value.rating+"</td>");
+            items.push("<td id=''"+key+"''>"+value.underwriter+"</td>");
+            items.push("<td id=''"+key+"''>"+value.park_address+"</td>");
+            items.push("<td id=''"+key+"''>"+value.location.latitude+", "+value.location.longitude+"</td>");
+            items.push("</tr>");            
+        }); 
+        $("<tbody/>", {html: items.join("")}).appendTo("table");
+    });
+</script>

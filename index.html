@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<!-- https://data.cityofchicago.org/resource/7piw-z6r6.json -->
 <html>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>3 screen app</title>
+         <link rel="shortcut icon" href="imgs/favicon.ico">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--         <link rel="shortcut icon" href="//favicon.ico" type="imgs/favicon.ico" /> -->
         <style>
             h1 { 
                 color: black; 
@@ -16,11 +15,13 @@
             .content {
                 display: none;
                 margin: 1em; }
+            #map {
+                height: 800px;
+            }
             
         </style>
     </head>
 <body>
-	<!-- navigation bar -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Navbar</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,9 +65,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
      
-    
-    
-    
+
      <script>
             var t = "#search"
             var t1 = "#list";

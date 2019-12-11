@@ -1,38 +1,44 @@
-<h1> Map Screen</h1>
-
-
-
-
-
-
-
-
-<script>
-$(document).ready(function(){
- $('#load_data').click(function(){
-  $.ajax({
-   url:"Chicago_Park_District__Movies_in_the_Parks_2019.csv",
-   dataType:"text",
-   success:function(data){
-       var chicago_park_district_movie_data = data.split(/\r?\n|\r/);
-       var table_data = '<table class="table table-bordered table-striped">';
-       for(var count = 0; count<chicago_park_district_movie_data.length; count++){
-           var cell_data = chicago_park_district_movie_data[count].split(",");
-           table_data += '<tr>';
-           for(var cell_count=0; cell_count<cell_data.length; cell_count++){
-               if(count === 0){
-                   table_data += '<th>'+cell_data[cell_count]+'</th>';
-                }
-                else{
-                    table_data += '<td>'+cell_data[cell_count]+'</td>';
-                }
-           }
-           table_data += '</tr>';
-       }
-       table_data += '</table>';
-       $('#chicago_park_district_movie_table').html(table_data);
-   }
-  });
- });
-});
+<div id="map"></div>
+    <script>
+      function initMap() {
+        var center = {lat:41.881832, lng:-87.623177};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: center
+        });
+          
+          
+       var endpoint = sessionStorage.getItem("endpoint");
+       $.getJSON(endpoint, function(data){        
+           $.each(data, function(key, value){
+               var contentString = '<div id="content">'+
+                '<div id="siteNotice">'+
+                '</div>'+
+                '<h1 id="firstHeading" class="firstHeading">'+value.title+'</h1>'+
+                '<div id="bodyContent">'+
+                '<p><b>Movie Rating: </b>' + value.rating + '</p>' +
+                '<p><b>Closed Captions: </b>' + value.cc + '</p>' +
+                '<p><b>Park: </b>' + value.park + '</p>' +
+                '<p><b>Address: </b>' + value.park_address + '</p>' +
+                '<p><b>Park Phone #: </b>' + value.park_phone + '</p>' +
+                '<p><b>Date :</b>' + value.date + '</p>' +
+                '</div>'+
+                '</div>';
+               var infowindow = new google.maps.InfoWindow({
+                   content: contentString
+               });
+               var marker = new google.maps.Marker({
+                   position: {lat: parseFloat(value.location.latitude), lng: parseFloat(value.location.longitude) },
+                   map: map,
+                   title :" value.title"
+               }); 
+               marker.addListener('click', function() {
+                  infowindow.open(map, marker);
+               });
+           });
+       });
+      }
+    </script>
+<script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl_zaQgDsonzRHgGWY0IeQ2ogydMWh87U&callback=initMap">
 </script>
